@@ -26,21 +26,31 @@
     </div>
     <!-- Seccion de la parte derecha -->
     <div class="Section2" [style.height.px]="Height">
-        <select #SelectSensorElement (change)="SelectSensor(SelectSensorElement.value)">
-            <option class="Option2">Sensor 1</option>
-            <option class="Option2">Sensor 2</option>
-            <option class="Option2">Sensor 3</option>
-            <option class="Option2">Sensor 4</option>
-            <option class="Option2">Sensor 5</option>
-            <option class="Option2">Sensor 6</option>
-            <option class="Option2">Sensor 7</option>
-            <option class="Option2">Sensor 8</option>
-        </select>
-        <div class="line"></div>
-        <div class="Container_Subtitle">
-            <span class="Subtitle">Alarma</span>
+        
+        <div class="container_center">
+            <div class="Container_Subtitle">
+                <span class="Subtitle">Selecciona Sensor</span>
+            </div>
         </div>
-        <div class="container_center_alarma">
+        <div class="container_center">
+            <select #SelectSensorElement (change)="SelectSensor(SelectSensorElement.value)">
+                <option class="Option2">Sensor 1</option>
+                <option class="Option2">Sensor 2</option>
+                <option class="Option2">Sensor 3</option>
+                <option class="Option2">Sensor 4</option>
+                <option class="Option2">Sensor 5</option>
+                <option class="Option2">Sensor 6</option>
+                <option class="Option2">Sensor 7</option>
+                <option class="Option2">Sensor 8</option>
+            </select>
+        </div>
+        <div class="line"></div>
+        <div class="container_center">
+            <div class="Container_Subtitle">
+                <span class="Subtitle">Alarma</span>
+            </div>
+        </div>
+        <div class="container_center">
             <div class="object_alarm">
                 <div class="object_alarm_subcontainer">
                     <span class="font_alarma1">
@@ -49,25 +59,43 @@
                 </div>
                 <div class="object_alarm_subcontainer">
                     <span class="font_alarma2">
-                        Dato de Advertencia: 220
+                        Dato de Advertencia: {{valorAdvertencia}}
                     </span>
                 </div>
                 <div class="object_alarm_subcontainer">
                     <div class="container_img_alarm">
-                        <img src="./assets/UI/editar.png" class="Object_img_borrar" alt="Borrar Alarma" (click)="EditarAlarma()">
+                        <img src="./assets/UI/editar.png" class="Object_img_borrar" alt="Borrar Alarma"
+                            (click)="EditarAlarma()">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="line"></div>
-        <div class="Container_Subtitle">
-            <span class="Subtitle">Datos</span>
+        <div class="container_center">
+            <div class="Container_Subtitle">
+                <span class="Subtitle">Datos</span>
+            </div>
         </div>
         <div class="Checkbox"><input type="checkbox" (change)="CheckBoxEvent(0)" #line>Ver grafica de barras</div>
         <div class="Checkbox"><input type="checkbox" (change)="CheckBoxEvent(1)" #radio>Ver radio bar</div>
         <div class="Checkbox"><input type="checkbox" (change)="CheckBoxEvent(2)" #data>Ver datos</div>
-        <!-- <div class="Checkbox"><input type="checkbox" (change)="CheckBoxEvent(3)" #bar>Ver progress bar</div> -->
+        <div class="line"></div>
+        <div class="container_center">
+            <div class="Container_Subtitle">
+                <span class="Subtitle">Descarga de Datos</span>
+            </div>
+        </div>
+        <!-- Button download Excel file -->
+        <div class="container_center">
+            <div class="Sub_Input" >
+                <span class="Information_Black">Descargar</span>
+                <div class="In_Input">
+                    <span class="Information">Excel</span>
+                </div>
+                <div style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></div>
+            </div>
+        </div>
         <div class="line"></div>
     </div>
 </div>

@@ -19,10 +19,12 @@ export class InicioComponent implements OnInit, AfterViewInit {
   public radioElement !: HTMLInputElement;
   @ViewChild('data') dataC !: ElementRef<HTMLInputElement>;
   public dataElement !: HTMLInputElement;
-
   public line: boolean = true;
   public radio: boolean = true;
   public data: boolean = true;
+
+  //Alarma
+  public valorAdvertencia : number = 220;
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -122,12 +124,26 @@ export class InicioComponent implements OnInit, AfterViewInit {
   EditarAlarma()
   {
     let data = prompt("Valor de Advertencia:");
+    if(data)
+    {
+      let aux = parseInt(data)
+      if(aux as Number)
+      {
+        this.valorAdvertencia = aux;
+      }else{
+        alert("El tipo de valor es incorrecto");
+        
+      }
+      
+    }
+      
+      
+ 
     console.log("EditarAlarma function in InicioComponent.ts");
     console.log("-> \"data:\"",data)
+  
     
   }
-
-
   //Encapsulamiento
   get Height() {
     /**Tamaño en horizontal usado para establecer el tamaño de .Section1 y .Section2 */
@@ -162,7 +178,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
   {
     return this.radio
   }
-
   get Data()
   {
     return this.data;
