@@ -8,16 +8,32 @@
         <div class="container_Graph_Line_Father" *ngIf="Line">
             <div class="container_Graph_Line_Child">
                 <!--Canvas Grafica Line-->
+              
+        <canvas baseChart class="LineChart"
+            [datasets]="lineChartData" [options]="lineChartOptions" [labels]="barChartLabels" [legend]="lineChartLegend"
+            [plugins]="lineChartPlugins" [type]="typeGraphic" draggable="true">
+        </canvas>
+    
             </div>
-        </div>
+        </div>   
+ 
         <div class="container_information_progressBar">
-            <div class="container_progressBar" *ngIf="Radio">
+            <div class="container_progressBar" *ngIf="Radio"  #RadialChart>
                 <!--Canvas Grafica Radio-->
+                <apx-chart #chart 
+                [style.width.px]="WidthRadialGraph" [style.height.px]="HeightRadialGraph"
+                class="radial_chart"
+                [series]="series2"
+                [chart]="chartRadialBar" 
+                [labels]="labels"
+                [plotOptions]="plotOptions"
+                [fill] = "fill"           
+                ></apx-chart>  
             </div>
             <div class="container_information" *ngIf="Data">
-                <span class="Information"> Max: {{Min}} </span>
+                <span class="Information"> Max: {{Max}} </span>
                 <span class="Information"> Actual: {{Now}} </span>
-                <span class="Information"> Min: {{Max}}</span>
+                <span class="Information"> Min: {{Min}}</span>
             </div>
         </div>
         <div class="Container_Normal_ProgressBar">
@@ -26,7 +42,9 @@
     </div>
     <!-- Seccion de la parte derecha -->
     <div class="Section2" [style.height.px]="Height">
-        
+        <div class="name_sensor_container">
+            <span class="Title">Opciones</span>
+        </div>
         <div class="container_center">
             <div class="Container_Subtitle">
                 <span class="Subtitle">Selecciona Sensor</span>
@@ -87,13 +105,14 @@
             </div>
         </div>
         <!-- Button download Excel file -->
+        <a href="C:\Proyectos\DebugloggerPleva\Servidor\Rutes\temp\excel.xls" download>excel</a>
         <div class="container_center">
             <div class="Sub_Input" >
                 <span class="Information_Black">Descargar</span>
-                <div class="In_Input">
+                <div class="In_Input" >
                     <span class="Information">Excel</span>
                 </div>
-                <div style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></div>
+                <div style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="DownloadExcel()"></div>
             </div>
         </div>
         <div class="line"></div>

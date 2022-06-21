@@ -41,6 +41,15 @@
     align-items: center;
 }
 
+/*********************LINE CHART(OPEN) *************************/
+.LineChart {
+    border-radius: 20px 20px 20px 20px;
+    border: 0px solid ;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 .container_Graph_Line_Father {
     /*segundo contenedor que se encuentra en section 1, cuya funcion es tener un espacio del 100% y centrar 
    otro div de 80%*/
@@ -59,30 +68,51 @@
     min-height: 300px;
     background-color: rgb(55, 55, 55);
     border-radius: 15px;
+    overflow: hidden;
 }
+/*********************LINE CHART(CLOSE) *************************/
 
+
+/*******************RADIAL CHART***********************/
 .container_information_progressBar {
     /*Tercer container que se encarga de obtener el 100% de nuevo y contener dos elementos dentro*/
     width: 100%;
     min-height: 300px;
     /*estructura*/
     display: flex;
+    flex-wrap: wrap;
 }
 
 .container_progressBar {
     /*Container dentro de container_information_progressBar encargado de contener el progressBar circular*/
     margin-left: 10%;
     width: 40%;
+    min-width:300px;
     height: 300px;
     border-radius: 15px;
     background-color: rgb(55, 55, 55);
+    position:relative;
+    
     /*estructura*/
 }
+.radial_chart{
+    /*esta es la clase del apx-charts component que nos sirve para posicionar la grafica de una mejor manera*/
+    position:absolute;
+    bottom:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    
+}
+/*******************RADIAL CHART(CLOSE)***********************/
+
+
 
 .container_information {
     /*Container que se encarga de contener los datos de la grafica progressBar circular*/
     margin: 50px;
     width: 33%;
+    min-width: 150px;
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.053);
     /*estructura*/
@@ -267,6 +297,7 @@ select {
 }
 
 /************OBJETO DE ALARMA (CLOSE) *****************/
+
 /************OBJECTO DE BOTON DESCARGAR EXCEL (OPEN) ************************/
 .Sub_Input {
     position: relative;

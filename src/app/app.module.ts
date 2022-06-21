@@ -6,7 +6,6 @@ import { ComponentesModule } from './Componentes/componentes.module';
 import { InicioComponent } from './Pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 import { NgApexchartsModule} from 'ng-apexcharts';
 
 @NgModule({
@@ -20,8 +19,7 @@ import { NgApexchartsModule} from 'ng-apexcharts';
     ComponentesModule,
     HttpClientModule,
     NgApexchartsModule,
-    NgChartsModule,
-    DragDropModule
+    NgChartsModule
   ],
   providers: [Document],
   bootstrap: [AppComponent]
