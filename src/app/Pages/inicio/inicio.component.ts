@@ -1,5 +1,6 @@
 
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { response } from 'express';
 /*Importaciones de ApexCharts (Open)*/
 import {
   ApexChart,
@@ -184,7 +185,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     private AlertService: AlertServiceService,
     private LineChartService: LineChartServiceService,
     private RadialChartService: RadialChartServiceService,
-    private ExcelService: ExcelService
+    private ExcelService: ExcelService,
   ) { }
 
   ngOnDestroy(): void {
@@ -211,11 +212,14 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
       this.SizeRadialChart();
     });
     setTimeout(() => {
+      this.SelectSensor("Sensor 1");
       this.SizeRadialChart();
       this.DefineChecked();
       clearTimeout();
       this.setHeight = document.body.scrollHeight - 80;
     }, 100);
+
+    //Peticiones para actualizar los datos en tiempo real
 
   }
 
@@ -241,7 +245,6 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     //0 = line
     //1 = radio
     //2 = data
-    //3 = bar
     switch (value) {
       case 0: {
         //line
@@ -258,33 +261,9 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
         this.changeData
         break;
       }
-      // case 3: {
-      //   //bar
-      //   this.changeBar
-      //   break;
-      // }
+     
     }
     this.DefineChecked();
-
-    const comentario = {//Pruebas de encapsulamiento (cambiar estado de los checkbox)
-      // console.log("ChechBoxEvent function in InicioComponent.ts")
-      // console.log("-> ",value)
-      // console.log("-> \"change of line\"",this.line);
-      // this.changeLine;
-      // console.log("-> \"change of line2\"",this.line);
-      // console.log("-> Valores de Bar")
-      // console.log("-> \"change of bar\"",this.bar);
-      // this.changeBar;
-      // console.log("-> \"change of bar2\"",this.bar);
-      // console.log("-> Valores de Radio")
-      // console.log("-> \"change of radio\"",this.radio);
-      // this.changeRadio;
-      // console.log("-> \"change of radio2\"",this.radio);
-      // console.log("-> Valores de data")
-      // console.log("-> \"change of data\"",this.data);
-      // this.changeData;
-      // console.log("-> \"change of data2\"",this.data);
-    }
   }
 
   DefineChecked() {
@@ -396,15 +375,17 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     }];
   }
 
-  DownloadExcel()
+  DownloadExcel():void
   {
-
-    alert("download");
     this.ExcelService.DownloadExcel({name: this.Name_Sensor}).subscribe((data) => {
-      console.log(data.path);
-      window.open(data.path);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = "./assets/excel.xlsx";
+      downloadLink.setAttribute('download', data.name+".xls");
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
     })
   }
+
 
   //Encapsulamiento
   get Height() {

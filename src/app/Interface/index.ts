@@ -25,4 +25,5 @@ export interface RadialChart{
 }
 export interface Excel{
     path: string;
+    name: string;
 }
