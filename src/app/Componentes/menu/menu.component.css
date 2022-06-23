@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 .size1 {
     width: 100%;
     height: 80px;
@@ -32,8 +34,7 @@
 }
 
 /******Options*******/
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
 .Option {
     width: calc(100px + .5vw);
     margin: 20px;

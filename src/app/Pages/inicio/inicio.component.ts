@@ -1,4 +1,5 @@
 
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { response } from 'express';
 /*Importaciones de ApexCharts (Open)*/
@@ -30,11 +31,12 @@ export type ChartOptions = {
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+  providers: [ExcelService, AlertServiceService, LineChartServiceService, RadialChartServiceService]
 })
 
 
-export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
+export class InicioComponent implements OnInit, AfterViewInit {
 
   /****************Radial Bar default options(Open) ***********/
   /***/@ViewChild('chart') radialChart !: ChartComponent;
@@ -188,11 +190,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     private ExcelService: ExcelService,
   ) { }
 
-  ngOnDestroy(): void {
-    this.AlarmaSubcription.unsubscribe;
-    this.LineChartSubcription.unsubscribe;
-    this.RadialChartSubscription.unsubscribe;
-  }
+
 
   ngAfterViewInit(): void {
     //Ontener los CheckBoxs
@@ -215,12 +213,17 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
       this.SelectSensor("Sensor 1");
       this.SizeRadialChart();
       this.DefineChecked();
-      clearTimeout();
       this.setHeight = document.body.scrollHeight - 80;
+      clearTimeout();
     }, 100);
 
     //Peticiones para actualizar los datos en tiempo real
+    setInterval(() => {
 
+      this.SelectSensor(this.Name_Sensor);
+
+      clearInterval();
+    }, 10000);
   }
 
   DisployMenu(event: Boolean) {
@@ -231,6 +234,16 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     //Evento del app-menu, captura la pagina a donde se quiere ir
     console.log("MenuOpcion function in InicioComponent.ts");
     console.log("-> ", event);
+    switch (event) {
+      case 'tutorial': {
+        window.location.href = "/Tutorial";
+        break;
+      }
+      case 'contacto': {
+        window.location.href="/Contacto";
+        break;
+      }
+    }
   }
 
   SelectSensor(sensor: string) {
@@ -261,7 +274,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
         this.changeData
         break;
       }
-     
+
     }
     this.DefineChecked();
   }
@@ -317,40 +330,36 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async Subscriptions(sensor: string) {
-    
-      this.AlarmaSubcription = await this.AlertService.GetAlert({ name: sensor }).subscribe((Alert) => {
-        if(Alert)
-        {
-          this.valorAdvertencia = Alert.dataTrigger;
-        }
-      })
-      this.LineChartSubcription = await this.LineChartService.GetLineChart({ name: sensor }).subscribe((LineChart) => {
-        if(LineChart)
-        {
+
+    this.AlarmaSubcription = await this.AlertService.GetAlert({ name: sensor }).subscribe((Alert) => {
+      if (Alert) {
+        this.valorAdvertencia = Alert.dataTrigger;
+      }
+    })
+    this.LineChartSubcription = await this.LineChartService.GetLineChart({ name: sensor }).subscribe((LineChart) => {
+      if (LineChart) {
         this.ChangeDataLineChart(LineChart.data);
         this.dataInformation = LineChart.data;
         let data: string[] = [];
-        LineChart.data.forEach(element => {  data.push(element.toString());  });
+        LineChart.data.forEach(element => { data.push(element.toString()); });
         this.barChartLabels = data;
-        }
-      });
-      this.RadialChartSubscription = await this.RadialChartService.GetRadialChart({ name: sensor }).subscribe((RadialChart) => {
-        if(RadialChart)
-        {
+      }
+    });
+    this.RadialChartSubscription = await this.RadialChartService.GetRadialChart({ name: sensor }).subscribe((RadialChart) => {
+      if (RadialChart) {
         this.Now = RadialChart.dataNow;
         this.Min = RadialChart.dataMin;
-        this.Max = RadialChart.dataMax;  
+        this.Max = RadialChart.dataMax;
         let MaxAux = this.Max / this.Min;
         let NowAux = this.Now / this.Min;
         let series = (NowAux * 100) / MaxAux;
-        this.series2 = [series];
+        this.series2 = [parseFloat(series.toFixed(3))];
       }
-      })
+    })
 
   }
 
-  ChangeDataLineChart(values : number[])
-  {
+  ChangeDataLineChart(values: number[]) {
     this.dataInformation = [1, 232, 3, 32, 2, 32, 32, 32, 32, 34, 45, 45, 32, 21, 3, 421, 4, 1];
     this.lineChartData = [{
       data: this.dataInformation,
@@ -362,7 +371,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
       pointBackgroundColor: "#5A9852",
       borderWidth: 2,
     }];
-    
+
     this.lineChartData = [{
       data: values,
       label: this.Name_Sensor,
@@ -375,12 +384,11 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     }];
   }
 
-  DownloadExcel():void
-  {
-    this.ExcelService.DownloadExcel({name: this.Name_Sensor}).subscribe((data) => {
+  DownloadExcel(): void {
+    this.ExcelService.DownloadExcel({ name: this.Name_Sensor }).subscribe((data) => {
       const downloadLink = document.createElement('a');
       downloadLink.href = "./assets/excel.xlsx";
-      downloadLink.setAttribute('download', data.name+".xls");
+      downloadLink.setAttribute('download', data.name + ".xls");
       document.body.appendChild(downloadLink);
       downloadLink.click();
     })
@@ -438,4 +446,9 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
   get Data() {
     return this.data;
   }
+  // ngOnDestroy(): void {
+  //   this.AlarmaSubcription.unsubscribe;
+  //   this.LineChartSubcription.unsubscribe;
+  //   this.RadialChartSubscription.unsubscribe;
+  // }
 }

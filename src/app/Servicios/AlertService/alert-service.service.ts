@@ -7,8 +7,8 @@ import {environment} from "../../../environments/enviroments.developers"
   providedIn: 'root'
 })
 export class AlertServiceService {
-
-  constructor(private http : HttpClient) { }
+  authenticated = false;
+  constructor(public http : HttpClient) { }
 
   CreateAlert(body: Object)
   {

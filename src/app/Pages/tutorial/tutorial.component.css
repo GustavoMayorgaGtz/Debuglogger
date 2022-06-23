@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+
+* {
+    user-select: none;
+
+}
+
+.container_primario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(214, 214, 214, 0.949);
+}
+
+.Title {
+    font-family: 'Mukta', sans-serif;
+    font-size: calc(12px + 1vw);
+    color: white;
+    font-weight: bold;
+}
+
+.container_title {
+    /* primer div dentro de Section1 y que contiene el Nombre del sensor con fuente Title*/
+    width: 100%;
+    background-color: rgb(134, 134, 134);
+    /*estructura*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_img {
+    margin: 10px;
+    width: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*******************************SUBTITLE*********************************/
+.container_subtitle {
+    display: flex;
+    width: 45%;
+    margin-top: 10px;
+    min-width: 300px;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgb(39, 39, 39);
+    ;
+}
+
+.Icono {
+    width: 20%;
+    height: 90%;
+    min-width: 50px;
+    transform: rotate(90deg);
+    margin: 5%;
+}
+
+.container_description {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.Subtitle {
+    font-family: 'Mukta', sans-serif;
+    font-size: calc(8px + 0.8vw);
+    color: white;
+}
+
+/*******************************INFORMATION*********************************/
+.container_information {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.information {
+    margin-left: 10px;
+    color: black;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 600;
+    font-size: calc(8px + .6vw);
+}
+
+/***************************************************************************/

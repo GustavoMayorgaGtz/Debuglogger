@@ -4,14 +4,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentesModule } from './Componentes/componentes.module';
 import { InicioComponent } from './Pages/inicio/inicio.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 import { NgApexchartsModule} from 'ng-apexcharts';
+import { ContactoComponent } from './Pages/contacto/contacto.component';
+import { TutorialComponent } from './Pages/tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent
+    InicioComponent,
+    ContactoComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,7 @@ import { NgApexchartsModule} from 'ng-apexcharts';
     NgApexchartsModule,
     NgChartsModule
   ],
-  providers: [Document],
+  providers: [Document,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

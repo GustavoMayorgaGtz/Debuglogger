@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
 
   Configuracion()
   {
-   this.option = "configuracion";
+   this.option = "contacto";
    this.setOption();
   }
 
