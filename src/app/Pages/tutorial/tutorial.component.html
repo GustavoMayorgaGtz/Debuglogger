@@ -1,8 +1,20 @@
 <app-menu (eventEmitter)="MenuOpcion($event)" (isDisployMenu)="DisployMenu($event)"></app-menu>
 <div class="container_primario">
+         <!-- ****Menu para responsive***** -->
+         <div class="container_menu_show" *ngIf="isOpenMenuResponsive == true">
+            <div class="container_fontMenu" (click)="MenuOpcion('inicio')"><span class="fontMenu">Inicio</span></div>
+            <div class="container_fontMenu" (click)="MenuOpcion('contacto')"><span class="fontMenu">Contacto</span></div>
+        </div>
+        <div class="container_menu_hide" *ngIf="isOpenMenuResponsive == false">
+            <div class="container_fontMenu"><span class="fontMenu">Inicio</span></div>
+            <!-- <div class="container_fontMenu"><span class="fontMenu">Tutorial</span></div> -->
+            <div class="container_fontMenu"><span class="fontMenu">Contacto</span></div>
+        </div>
+        <!-- ********* -->
     <div class="container_title">
         <span class="Title">Tutorial</span>
     </div>
+  
     <!--**********************************-->
     <div class="container_subtitle">
         <div class="container_icon">
@@ -10,7 +22,7 @@
         </div>
 
         <div class="container_description">
-            <span class="Subtitle">Menu de Opciones</span>
+            <span class="Subtitle">Menú de Opciones</span>
         </div>
     </div>
     <div class="container_img">
@@ -18,7 +30,7 @@
     </div>
     <div class="container_information">
         <span class="information">
-            Este es el menu de rutas de la pagina, por aqui pudes acceder a las rutas que necesites.
+            Este es el menú de rutas de la página, aquí puedes acceder a las rutas que necesites.
         </span>
     </div>
     <!--**********************************-->
@@ -37,8 +49,8 @@
     </div>
     <div class="container_information">
         <span class="information">
-            En esta seccion puedes observar los sensores donde se muestra los datos historicos de temperatura así como
-            el dato actual, dato minimo y dato maximo;
+            En esta sección puedes observar los sensores donde se muestra los datos históricos de temperatura así como
+            el dato actual, dato mínimo y dato máximo;
         </span>
     </div>
     <!--**********************************-->
@@ -57,7 +69,91 @@
     </div>
     <div class="container_information">
         <span class="information">
-            Las opciones que se encuentran el parte derecha de la página web, te ayudaran a organizar mejor la información que requieres así como visualizarlas de una manera diferente.
+            Las opciones que se encuentran en la parte derecha de la página web, te ayudaran a organizar mejor la
+            información que requieres así como visualizarlas de una manera diferente.
+        </span>
+    </div>
+    <!--**********************************-->
+    <!--**********************************-->
+    <div class="container_subtitle">
+        <div class="container_icon">
+            <img class="Icono" src="./assets/UI/selector.png">
+        </div>
+
+        <div class="container_description">
+            <span class="Subtitle">Seleccion de sensor</span>
+        </div>
+    </div>
+    <div class="container_img">
+        <img class="img" src="./assets/Tutorial/SeleccionarSensor.png">
+    </div>
+    <div class="container_information">
+        <span class="information">
+            Una vez hagas clic en la lista desplegable, puedes ver los 8 sensores disponibles, selecciona el sensor del
+            cual quieras saber la información.
+        </span>
+    </div>
+    <!--**********************************-->
+    <!--**********************************-->
+    <div class="container_subtitle">
+        <div class="container_icon">
+            <img class="Icono" src="./assets/UI/selector.png">
+        </div>
+
+        <div class="container_description">
+            <span class="Subtitle">Modifica el dato de advertencia</span>
+        </div>
+    </div>
+    <div class="container_img">
+        <img class="img" src="./assets/Tutorial/EditarValor.png">
+    </div>
+    <div class="container_information">
+        <span class="information">
+            Este valor es una medida de protección para los sensores, si el valor actual supera este valor se dispara
+            una advertencia que se encargara de enviar un correo electrónico notificando lo que sucede al encargado.
+
+            El valor se puede modificar haciendo un clic en el icono de editar que se encuentra en la parte derecha del
+            bloque.
+        </span>
+    </div>
+    <!--**********************************-->
+    <!--**********************************-->
+    <div class="container_subtitle">
+        <div class="container_icon">
+            <img class="Icono" src="./assets/UI/selector.png">
+        </div>
+
+        <div class="container_description">
+            <span class="Subtitle">Ocultar datos</span>
+        </div>
+    </div>
+    <div class="container_img">
+        <img class="img" src="./assets/Tutorial/VerDatos.png">
+    </div>
+    <div class="container_information">
+        <span class="information">
+            En caso de que solo se quieran observar ciertos valores tienes la posibilidad de seleccionar los datos que
+            quieres ver en la sección de gráficas.
+        </span>
+    </div>
+    <!--**********************************-->
+    <!--**********************************-->
+    <div class="container_subtitle">
+        <div class="container_icon">
+            <img class="Icono" src="./assets/UI/selector.png">
+        </div>
+
+        <div class="container_description">
+            <span class="Subtitle">Descargar datos</span>
+        </div>
+    </div>
+    <div class="container_img">
+        <img class="img" src="./assets/Tutorial/DescargarDatos.png">
+    </div>
+    <div class="container_information">
+        <span class="information">
+            Tienes la opción de descargar los datos en formato Excel, se mostrarán todos los datos recopilados del
+            sensor que seleccionaste.
         </span>
     </div>
     <!--**********************************-->

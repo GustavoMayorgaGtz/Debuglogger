@@ -38,11 +38,15 @@
     justify-content: center;
     align-items: center;
 }
+.img{
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 /*******************************SUBTITLE*********************************/
 .container_subtitle {
     display: flex;
-    width: 45%;
+    width: 40%;
     margin-top: 10px;
     min-width: 300px;
     height: 50px;
@@ -69,7 +73,8 @@
 
 .Subtitle {
     font-family: 'Mukta', sans-serif;
-    font-size: calc(8px + 0.8vw);
+    font-size: calc(13px + 0.9vw);
+    font-weight: 600;
     color: white;
 }
 
@@ -77,6 +82,7 @@
 .container_information {
     display: flex;
     width: 100%;
+    margin-bottom: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -90,3 +96,94 @@
 }
 
 /***************************************************************************/
+.container_menu_show {
+    display: none;
+}
+
+.container_menu_hide {
+    display: none;
+}
+
+@media (max-width: 700px)
+{
+    .img{
+        width:80%;
+    }
+      /********* Menu en modo responsive ***********/
+ .container_menu_show {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    left: 0px;
+    animation: 0.5s show;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    z-index: 300;
+}
+
+.container_menu_hide {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    left: 0px;
+    animation: 0.5s hide;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    z-index: 300;
+}
+
+.fontMenu {
+    font-family: 'PT Sans', sans-serif;
+    padding-left: 20px;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    font-size: calc(12px + 1.5vw);
+}
+
+.container_fontMenu {
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(83, 83, 83, 0.895);
+}
+
+.container_fontMenu:hover {
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(164, 164, 164, 0.895);
+
+}
+/***************************************************************/
+}
+/* **************ANIMACIONES*************** */
+@keyframes show {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.2;
+        z-index: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 300;
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 300;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+        z-index: 0;
+    }
+}

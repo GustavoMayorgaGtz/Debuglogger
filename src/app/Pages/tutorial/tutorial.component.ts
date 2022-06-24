@@ -6,13 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tutorial.component.css']
 })
 export class TutorialComponent implements OnInit {
-
+  //MenuResponsive
+  public isOpenMenuResponsive: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-  //app menu events
+
   DisployMenu(event: Boolean) {
+    //Captura de Output del componente Menu para desplegar el menu o esconderlov
+    this.isOpenMenuResponsive = !this.isOpenMenuResponsive;
   }
 
   MenuOpcion(event: String) {

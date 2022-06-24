@@ -42,6 +42,7 @@
     align-items: center;
 }
 
+
 /*********************LINE CHART(OPEN) *************************/
 .LineChart {
     border-radius: 20px 20px 20px 20px;
@@ -375,6 +376,14 @@ select:hover {
     }
 }
 
+.container_menu_show {
+    display: none;
+}
+
+.container_menu_hide {
+    display: none;
+}
+
 /************OBJECTO DE BOTON DESCARGAR EXCEL (CLOSE) ************************/
 
 /***************************FUENTES*****************************/
@@ -439,11 +448,88 @@ select:hover {
         /*estructura*/
         display: none;
     }
+     /********* Menu en modo responsive ***********/
+ .container_menu_show {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    left: 0px;
+    animation: 0.5s show;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    z-index: 300;
+}
+
+.container_menu_hide {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    left: 0px;
+    animation: 0.5s hide;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    z-index: 300;
+}
+
+.fontMenu {
+    font-family: 'PT Sans', sans-serif;
+    padding-left: 20px;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    font-size: calc(12px + 1.5vw);
+}
+
+.container_fontMenu {
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(83, 83, 83, 0.895);
+}
+
+.container_fontMenu:hover {
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(164, 164, 164, 0.895);
+
+}
+/***************************************************************/
 
     .Section2 {
         width: 100%;
         background-color: rgb(35, 35, 35);
         /*estructura*/
         display: block;
+    }
+}
+ /* **************ANIMACIONES*************** */
+ @keyframes show {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.2;
+        z-index: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 300;
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 300;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+        z-index: 0;
     }
 }

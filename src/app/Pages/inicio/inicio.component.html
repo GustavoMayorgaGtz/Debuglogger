@@ -1,5 +1,16 @@
 <app-menu (eventEmitter)="MenuOpcion($event)" (isDisployMenu)="DisployMenu($event)"></app-menu>
 <div class="container_body">
+      <!-- ****Menu para responsive***** -->
+      <div class="container_menu_show" *ngIf="isOpenMenuResponsive == true">
+        <div class="container_fontMenu" (click)="MenuOpcion('tutorial')"><span class="fontMenu">Tutorial</span></div>
+        <div class="container_fontMenu" (click)="MenuOpcion('contacto')"><span class="fontMenu">Contacto</span></div>
+    </div>
+    <div class="container_menu_hide" *ngIf="isOpenMenuResponsive == false">
+        <div class="container_fontMenu"><span class="fontMenu">Inicio</span></div>
+        <!-- <div class="container_fontMenu"><span class="fontMenu">Tutorial</span></div> -->
+        <div class="container_fontMenu"><span class="fontMenu">Tutorial</span></div>
+    </div>
+    <!-- ********* -->
     <!-- Seccion de la parte izquierda -->
     <div class="Section1" [style.height.px]="Height">
         <div class="name_sensor_container">

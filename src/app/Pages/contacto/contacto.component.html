@@ -1,1 +1,41 @@
-<p>contacto works!</p>
+<app-menu (eventEmitter)="MenuOpcion($event)" (isDisployMenu)="DisployMenu($event)"></app-menu>
+<div class="container_primario">
+         <!-- ****Menu para responsive***** -->
+         <div class="container_menu_show" *ngIf="isOpenMenuResponsive == true">
+            <div class="container_fontMenu" (click)="MenuOpcion('inicio')"><span class="fontMenu">Inicio</span></div>
+            <div class="container_fontMenu" (click)="MenuOpcion('tutorial')"><span class="fontMenu">Tutorial</span></div>
+        </div>
+        <div class="container_menu_hide" *ngIf="isOpenMenuResponsive == false">
+            <div class="container_fontMenu"><span class="fontMenu">Inicio</span></div>
+            <!-- <div class="container_fontMenu"><span class="fontMenu">Tutorial</span></div> -->
+            <div class="container_fontMenu"><span class="fontMenu">Tutorial</span></div>
+        </div>
+        <!-- ********* -->
+<div class="container_principal">
+    <section class="Section1">
+        <div class="container1" #container1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3599.2668877740457!2d-103.5179690465592!3d25.562786069446123!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x936243aea09d1b9d!2sControler!5e0!3m2!1ses-419!2smx!4v1656085326379!5m2!1ses-419!2smx" width={{widthContainer1}} height={{heightContainer1}} style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="container2">
+         <div class="container3">
+            <img src="./assets/UI/Logo_Controler_HD.webp" alt="logo" class="logo">
+         </div>
+         <br>
+         <div class="container3">
+            <div class="container5">
+                <span class="Detalles">Detalles:</span>
+                <div class="bloque"><img class="img_bloque" src="./assets/UI/phone.png"><span class="font1"> 871 267 9937</span></div>
+                <div class="bloque"><img class="img_bloque" src="./assets/UI/web.png"> <span class="font1"><a href="https://controler.mx">controler.mx</a></span></div>
+                <div class="bloque"><img class="img_bloque" src="./assets/UI/mail.png"><span class="font1">info@controler.com.mx</span></div>
+
+            </div>
+         </div>
+        </div>
+    </section>
+    <div class="information">
+
+    </div>
+    <span class="information"></span> 
+
+   yolanda vallez
+</div>

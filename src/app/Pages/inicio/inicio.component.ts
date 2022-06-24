@@ -178,7 +178,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
   public LineChartSubcription !: Subscription;
   public RadialChartSubscription !: Subscription;
   public AlarmaEditSubscription !: Subscription;
-
+  //MenuResponsive
+  public isOpenMenuResponsive: boolean = false;
   /**********************************************************************************************************************/
   /**********************************************************************************************************************/
 
@@ -227,7 +228,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
   }
 
   DisployMenu(event: Boolean) {
-    //Captura de Output del componente Menu para desplegar el menu o esconderlo
+    //Captura de Output del componente Menu para desplegar el menu o esconderlov
+    this.isOpenMenuResponsive = !this.isOpenMenuResponsive;
   }
 
   MenuOpcion(event: String) {
@@ -337,12 +339,17 @@ export class InicioComponent implements OnInit, AfterViewInit {
       }
     })
     this.LineChartSubcription = await this.LineChartService.GetLineChart({ name: sensor }).subscribe((LineChart) => {
-      if (LineChart) {
+
+      if (!LineChart.isNull) {
         this.ChangeDataLineChart(LineChart.data);
         this.dataInformation = LineChart.data;
         let data: string[] = [];
         LineChart.data.forEach(element => { data.push(element.toString()); });
         this.barChartLabels = data;
+      }else
+      {
+        console.log(LineChart);
+        alert("No hay datos del sensor");
       }
     });
     this.RadialChartSubscription = await this.RadialChartService.GetRadialChart({ name: sensor }).subscribe((RadialChart) => {

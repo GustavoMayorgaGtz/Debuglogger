@@ -10,42 +10,89 @@ import { InicioComponent } from './inicio.component';
 describe('InicioComponent', () => {
   let component: InicioComponent;
   let fixture: ComponentFixture<InicioComponent>;
-  // let testBedService1: AlertServiceService;
-  // let testBedService2: ExcelService;
-  // let testBedService3: LineChartServiceService;
-  // let testBedService4: RadialChartServiceService;
-  // let testBedService5: HttpClient;
+  let alertService: AlertServiceService;
+  let excelService: ExcelService;
+  let LineChartService: LineChartServiceService;
+  let radialChartService: RadialChartServiceService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [AlertServiceService,
+      providers: [
+        AlertServiceService,
         HttpClient,
         HttpHandler,
         ExcelService,
         LineChartServiceService,
         RadialChartServiceService],
       declarations: [InicioComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
+
+    alertService = TestBed.inject(AlertServiceService);
+    excelService = TestBed.inject(ExcelService);
+    LineChartService = TestBed.inject(LineChartServiceService);
+    radialChartService = TestBed.inject(RadialChartServiceService);
+      
   });
 
   beforeEach(() => {
-    // testBedService1 = TestBed.inject(AlertServiceService);
-    // testBedService2 = TestBed.inject(ExcelService);
-    // testBedService3 = TestBed.inject(LineChartServiceService);
-    // testBedService4 = TestBed.inject(RadialChartServiceService);
-    // testBedService5 = TestBed.inject(HttpClient);
     fixture = TestBed.createComponent(InicioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    // expect(testBedService1).toBeTruthy();
-    // expect(testBedService2).toBeTruthy();
-    // expect(testBedService3).toBeTruthy();
-    // expect(testBedService4).toBeTruthy();
-    // expect(testBedService5).toBeTruthy();
     expect(component).toBeTruthy();
   });
+
+  it('seleccion de sensor', () => {
+    
+    component.SelectSensor('Sensor 1');
+    let Name_Sensor = component.Name_Sensor;
+    expect(Name_Sensor).toEqual("Sensor 1");
+    component.SelectSensor('Sensor 2');
+    Name_Sensor = component.Name_Sensor;
+    expect(Name_Sensor).toEqual("Sensor 2");
+  })
+
+  it('seleccion de checkbox', () => {
+    
+    //
+    component.CheckBoxEvent(0);
+    let line = component.line;
+    expect(line).toBeFalse();
+    component.CheckBoxEvent(0);
+    line = component.line;
+    expect(line).toBeTrue();
+    //
+    //
+    component.CheckBoxEvent(1);
+    let radio = component.radio;
+    expect(radio).toBeFalsy();
+    component.CheckBoxEvent(1);
+    radio = component.radio;
+    expect(radio).toBeTruthy();
+    //
+    //
+    component.CheckBoxEvent(2);
+    let data = component.data;
+    expect(data).toBeFalsy();
+    component.CheckBoxEvent(2);
+    data = component.data;
+    expect(data).toBeTruthy();
+    //
+  })
+  it('Cargar Servicios', ()=> {
+    //AlertService
+    expect(alertService).toBeTruthy();
+    //RadialService
+    expect(radialChartService).toBeTruthy();
+    //LineChartService
+    expect(LineChartService).toBeTruthy();
+    //Excel Service
+    expect(excelService).toBeTruthy();
+  })
+  it('LineChartService', () => {
+    expect(LineChartService).toBeTruthy();
+    let data
+  })
 });
