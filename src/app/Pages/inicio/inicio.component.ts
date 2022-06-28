@@ -205,16 +205,16 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     //Eventos
-    this.setHeight = document.body.scrollHeight - 80;
+    this.setHeight = document.body.scrollHeight + 20;
     window.addEventListener('resize', () => {
-      this.setHeight = document.body.scrollHeight - 80;
+      this.setHeight = document.body.scrollHeight + 20;
       this.SizeRadialChart();
     });
     setTimeout(() => {
       this.SelectSensor("Sensor 1");
       this.SizeRadialChart();
       this.DefineChecked();
-      this.setHeight = document.body.scrollHeight - 80;
+      this.setHeight = document.body.scrollHeight + 20;
       clearTimeout();
     }, 100);
 
@@ -234,8 +234,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   MenuOpcion(event: String) {
     //Evento del app-menu, captura la pagina a donde se quiere ir
-    console.log("MenuOpcion function in InicioComponent.ts");
-    console.log("-> ", event);
+    // console.log("MenuOpcion function in InicioComponent.ts");
+    // console.log("-> ", event);
     switch (event) {
       case 'tutorial': {
         window.location.href = "/Tutorial";
@@ -250,8 +250,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   SelectSensor(sensor: string) {
     //Evento que captura el cambio del select, Capturando el sensor que se quiere ver
-    console.log("SelectSensor function in InicioComponent.ts");
-    console.log("-> ", sensor);
+    // console.log("SelectSensor function in InicioComponent.ts");
+    // console.log("-> ", sensor);
     this.nameSensor = sensor;
     this.Subscriptions(this.nameSensor);
   }
@@ -301,8 +301,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
       }
 
     }
-    console.log("EditarAlarma function in InicioComponent.ts");
-    console.log("-> \"data:\"", data)
+    // console.log("EditarAlarma function in InicioComponent.ts");
+    // console.log("-> \"data:\"", data)
   }
   SizeRadialChart() {
     //Cambiamos el tamaño de la grafica radial
@@ -325,9 +325,9 @@ export class InicioComponent implements OnInit, AfterViewInit {
         offsetY: 20
       };
     } else {
-      alert("warning");
-      console.warn("Function SizeRadialChart in InicioComponent");
-      console.warn("-> no se reconocio el contenedor de la grafica radial");
+      // alert("warning");
+      // console.warn("Function SizeRadialChart in InicioComponent");
+      // console.warn("-> no se reconocio el contenedor de la grafica radial");
     }
   }
 

@@ -106,9 +106,9 @@
                 <span class="Subtitle">Datos</span>
             </div>
         </div>
-        <div class="Checkbox"><input type="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(0)" #line>Ver grafica de barras</div>
-        <div class="Checkbox"><input type="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(1)" #radio>Ver radio bar</div>
-        <div class="Checkbox"><input type="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(2)" #data>Ver datos</div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(0)" id="line" #line><label for="line" class="Checkbox_Text">Ver grafica de barras</label></div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(1)" id="radio" #radio><label for="radio" class="Checkbox_Text">Ver radio bar</label></div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(2)" id="data" #data><label for="data" class="Checkbox_Text">Ver datos</label></div>
         <div class="line"></div>
         <div class="container_center">
             <div class="Container_Subtitle">

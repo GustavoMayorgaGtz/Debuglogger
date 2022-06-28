@@ -81,6 +81,7 @@ describe('InicioComponent', () => {
     expect(data).toBeTruthy();
     //
   })
+  //TODO:Falta de terminar las pruebas de servicios con http*/
   it('Cargar Servicios', ()=> {
     //AlertService
     expect(alertService).toBeTruthy();
@@ -93,6 +94,6 @@ describe('InicioComponent', () => {
   })
   it('LineChartService', () => {
     expect(LineChartService).toBeTruthy();
-    let data
+    
   })
 });

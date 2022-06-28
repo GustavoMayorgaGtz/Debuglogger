@@ -9,6 +9,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { NgApexchartsModule} from 'ng-apexcharts';
 import { ContactoComponent } from './Pages/contacto/contacto.component';
 import { TutorialComponent } from './Pages/tutorial/tutorial.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import { TutorialComponent } from './Pages/tutorial/tutorial.component';
     TutorialComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ComponentesModule,
     HttpClientModule,
     NgApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
+    RouterModule
   ],
   providers: [Document,HttpClient],
   bootstrap: [AppComponent]

@@ -35,7 +35,7 @@
 .name_sensor_container {
     /* primer div dentro de Section1 y que contiene el Nombre del sensor con fuente Title*/
     width: 100%;
-    background-color: rgb(134, 134, 134);
+    background-color: rgb(61, 61, 61);
     /*estructura*/
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@
 /*********************LINE CHART(OPEN) *************************/
 .LineChart {
     border-radius: 20px 20px 20px 20px;
-    border: 0px solid ;
+    border: 0px solid;
     position: relative;
     width: 100%;
     height: 100%;
@@ -74,6 +74,7 @@
     border-radius: 15px;
     overflow: hidden;
 }
+
 /*********************LINE CHART(CLOSE) *************************/
 
 
@@ -92,23 +93,25 @@
     /*Container dentro de container_information_progressBar encargado de contener el progressBar circular*/
     margin-left: 10%;
     width: 40%;
-    min-width:300px;
+    min-width: 300px;
     height: 300px;
     border-radius: 15px;
     background-color: rgb(55, 55, 55);
-    position:relative;
-    
+    position: relative;
+
     /*estructura*/
 }
-.radial_chart{
+
+.radial_chart {
     /*esta es la clase del apx-charts component que nos sirve para posicionar la grafica de una mejor manera*/
-    position:absolute;
-    bottom:0px;
+    position: absolute;
+    bottom: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
-    
+
 }
+
 /*******************RADIAL CHART(CLOSE)***********************/
 
 
@@ -161,6 +164,7 @@ select {
     font-family: 'PT Sans', sans-serif;
     cursor: pointer;
 }
+
 select:hover {
     /* Estilos para los tags Select */
     margin-left: 2px;
@@ -174,7 +178,8 @@ select:hover {
     font-family: 'PT Sans', sans-serif;
     cursor: pointer;
 }
-.Option2:hover{
+
+.Option2:hover {
     cursor: pointer;
 }
 
@@ -333,7 +338,7 @@ select:hover {
     background-color: white;
     padding: 8px 50px;
     overflow: hidden;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .In_Input {
@@ -347,21 +352,21 @@ select:hover {
     width: 100%;
     height: 100%;
     transition: 1s all;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .Sub_Input:hover .In_Input {
     animation: slideRightExcelButton 1s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    
+
 }
 
 .In_Input:hover {
     animation: slideRightExcelButton 1s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    
+
 }
 
 @keyframes slideRightExcelButton {
@@ -401,6 +406,7 @@ select:hover {
     font-weight: bold;
     margin-left: 10px;
 }
+
 .Information_Black {
     font-family: 'Mukta', sans-serif;
     font-size: calc(10px + .9vw);
@@ -409,12 +415,20 @@ select:hover {
 }
 
 .Checkbox {
-    color: rgb(60, 124, 187);
+    color: rgb(81, 158, 235);
     font-family: 'PT Sans', sans-serif;
     font-size: calc(10px + .5vw);
+    font-weight: 500;
     margin-top: 5px;
     margin-left: 50px;
     margin-bottom: 5px;
+    display:flex;
+    align-items: center;
+}
+
+.checkbox {
+    width: 23px;
+    height: 23px;
 }
 
 .Subtitle {
@@ -430,15 +444,15 @@ select:hover {
     color: white;
     font-family: 'PT Sans', sans-serif;
     font-size: calc(8px + .4vw);
-    
-    width:100%;
+
+    width: 100%;
 }
 
 .font_alarma2 {
     color: greenyellow;
     font-family: 'PT Sans', sans-serif;
     font-size: calc(8px + .4vw);
-    
+
 }
 
 
@@ -448,65 +462,213 @@ select:hover {
         /*estructura*/
         display: none;
     }
-     /********* Menu en modo responsive ***********/
- .container_menu_show {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    top: 80px;
-    left: 0px;
-    animation: 0.5s show;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    z-index: 300;
-}
+    /***************************FUENTES*****************************/
+    
 
-.container_menu_hide {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    top: 80px;
-    left: 0px;
-    animation: 0.5s hide;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    z-index: 300;
-}
-
-.fontMenu {
+select {
+    /* Estilos para los tags Select */
+    margin-left: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(144, 144, 144);
+    width: 80%;
+    height: 50px;
+    font-size: calc(12px + 1vw);
+    background-color: rgb(24, 24, 24);
+    color: white;
     font-family: 'PT Sans', sans-serif;
-    padding-left: 20px;
-    position: relative;
+    cursor: pointer;
+}
+
+select:hover {
+    /* Estilos para los tags Select */
+    margin-left: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 50px;
+    font-size: calc(12px + 1vw);
+    background-color: rgb(48, 48, 48);
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    cursor: pointer;
+}
+
+.Title {
+    font-family: 'Mukta', sans-serif;
+    font-size: calc(12px + 2vw);
     color: white;
     font-weight: bold;
+}
+
+.Information {
+    font-family: 'Mukta', sans-serif;
+    font-size: calc(12px + 1.5vw);
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.Information_Black {
+    font-family: 'Mukta', sans-serif;
+    font-size: calc(12px + 1.5vw);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.Subtitle {
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-family: 'Mukta', sans-serif;
     font-size: calc(12px + 1.5vw);
 }
+/****ALARMA******/
+.font_alarma1 {
+    margin-left: 10px;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: calc(12px + 1vw);
 
-.container_fontMenu {
-    padding: 20px;
     width: 100%;
-    background-color: rgba(83, 83, 83, 0.895);
 }
 
-.container_fontMenu:hover {
-    padding: 20px;
-    width: 100%;
-    background-color: rgba(164, 164, 164, 0.895);
+.font_alarma2 {
+    color: greenyellow;
+    font-family: 'PT Sans', sans-serif;
+    font-size: calc(12px + 1vw);
 
 }
+
+
+    /********* Menu en modo responsive ***********/
+    .container_menu_show {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        top: 80px;
+        left: 0px;
+        animation: 0.5s show;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        z-index: 300;
+    }
+
+    .container_menu_hide {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        top: 80px;
+        left: 0px;
+        animation: 0.5s hide;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        z-index: 300;
+    }
+
+    .fontMenu {
+        font-family: 'PT Sans', sans-serif;
+        padding-left: 20px;
+        position: relative;
+        color: white;
+        font-weight: bold;
+        font-size: calc(12px + 1.5vw);
+    }
+
+    .container_fontMenu {
+        padding: 20px;
+        width: 100%;
+        background-color: rgba(83, 83, 83, 0.895);
+    }
+
+    .container_fontMenu:hover {
+        padding: 20px;
+        width: 100%;
+        background-color: rgba(164, 164, 164, 0.895);
+    }
+
+    .Checkbox {
+        color: rgb(100, 170, 239);
+        font-family: 'PT Sans', sans-serif;
+        font-size: calc(12px + .9vw);
+        margin-top: 5px;
+        font-size: calc(10px + .5vw);
+        font-weight: 500;
+        margin-left: 50px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .Checkbox_Text{
+        color: rgb(60, 124, 187);
+        font-family: 'PT Sans', sans-serif;
+        font-size: calc(12px + .9vw);
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .checkbox {
+        width: 32px;
+        height: 32px;
+    }
+
 /***************************************************************/
 
-    .Section2 {
-        width: 100%;
-        background-color: rgb(35, 35, 35);
-        /*estructura*/
-        display: block;
-    }
+.Section2 {
+    width: 100%;
+    background-color: rgb(35, 35, 35);
+    /*estructura*/
+    display: block;
 }
- /* **************ANIMACIONES*************** */
- @keyframes show {
+/************OBJECTO DE BOTON DESCARGAR EXCEL (OPEN) ************************/
+.Sub_Input {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px 70px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.In_Input {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #10783f;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transition: 1s all;
+    cursor: pointer;
+}
+
+.Sub_Input:hover .In_Input {
+    animation: slideRightExcelButton 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+}
+
+.In_Input:hover {
+    animation: slideRightExcelButton 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+}
+}
+
+/* **************ANIMACIONES*************** */
+@keyframes show {
     0% {
         transform: translateX(-100%);
         opacity: 0.2;

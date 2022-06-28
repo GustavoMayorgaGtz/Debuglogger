@@ -101,6 +101,21 @@
     animation-fill-mode: forwards;
     z-index: 300;
 }
+.Section1{
+    display: block;
+}
+.container1{
+    width:100%;
+    margin:10px;
+    min-height: 200px;
+    border: 5px solid rgb(228, 228, 228);
+    overflow: hidden;
+}
+.container2{
+    width:100%;
+    display:flex;
+    flex-direction:column;    
+}
 
 .fontMenu {
     font-family: 'PT Sans', sans-serif;
