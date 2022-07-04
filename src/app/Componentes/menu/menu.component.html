@@ -1,23 +1,25 @@
 <nav class="size1">
     <div class="container_logo">
-        <picture draggable="false">
+        <picture draggable="false" class="LOGO">
             <!-- <source type="image/webp" data-srcset="./assets/UI/Logo_Controler_HD.webp"> -->
             <img class="img_logo" src="./assets/UI/Logo_Controler_HD.webp" alt="logo">
         </picture>
-        <div class="Option" (click)="Inicio()">
-            <span class="Font_Option" (click)="Inicio()">
-                Inicio
-            </span>
-        </div>
-        <div class="Option" (click)="Tutorial()">
-            <span class="Font_Option" (click)="Tutorial()">
-                Tutorial
-            </span>
-        </div>
-        <div class="Option" (click)="Configuracion()">
-            <span class="Font_Option" (click)="Configuracion()">
-                Contacto
-            </span>
+        <div class="menu">
+            <div class="Option" (click)="Inicio()">
+                <span class="Font_Option" (click)="Inicio()">
+                    Inicio
+                </span>
+            </div>
+            <div class="Option" (click)="Tutorial()">
+                <span class="Font_Option" (click)="Tutorial()">
+                    Tutorial
+                </span>
+            </div>
+            <div class="Option" (click)="Configuracion()">
+                <span class="Font_Option" (click)="Configuracion()">
+                    Contacto
+                </span>
+            </div>
         </div>
     </div>
 </nav>

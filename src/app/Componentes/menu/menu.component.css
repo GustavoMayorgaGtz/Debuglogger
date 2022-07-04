@@ -7,7 +7,7 @@
     width: 100%;
     height: 80px;
     min-height: 80px;
-    background-color: rgb(255, 255, 255);
+    background-color:#1f2022;
     display: flex;
     align-items: center;
     position:relative;
@@ -28,12 +28,16 @@
     justify-content: center;
     align-items: center;
 }
+.LOGO{
+    position:absolute;
+    left:20px;
+}
 
 .img_logo {
     height: 100%;
     width: 100%;
     min-width: 200px;
-    filter: invert(100%);
+    filter: invert(0);
 }
 
 /******Options*******/
@@ -47,7 +51,7 @@
     align-items: center;
     padding: 0px 20px;
     border-radius: 5px;
-    background-color: rgba(12, 51, 71, 0.7);
+    background-color: #48494d;
     cursor: pointer;
 }
 
@@ -71,6 +75,12 @@
 .Option:hover .Font_Option{
     transform: scale(1.1);
     transition: all 0.5s;
+}
+.menu{
+    display: flex;
+    height: 100%;
+    position: absolute;
+    right: 10px;
 }
 
 /*******************************************************************/

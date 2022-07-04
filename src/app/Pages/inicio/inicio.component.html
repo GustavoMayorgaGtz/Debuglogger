@@ -13,7 +13,7 @@
     <!-- ********* -->
     <!-- Seccion de la parte izquierda -->
     <div class="Section1" [style.height.px]="Height">
-        <div class="name_sensor_container">
+        <div class="name_sensor_container_title">
             <span class="Title">{{Name_Sensor}}</span>
         </div>
         <div class="container_Graph_Line_Father" *ngIf="Line">
@@ -42,9 +42,9 @@
                 ></apx-chart>  
             </div>
             <div class="container_information" *ngIf="Data">
-                <span class="Information"> Max: {{Max}} </span>
+                <span class="Information"> Maximo valor registrado: <br> <span class="Information" style="color:green">{{Max}}</span> </span>
                 <span class="Information"> Actual: {{Now}} </span>
-                <span class="Information"> Min: {{Min}}</span>
+                <span class="Information"> Minimo valor registrado: <br><span class="Information" style="color:green">{{Min}}</span> </span>
             </div>
         </div>
         <div class="Container_Normal_ProgressBar">
@@ -52,13 +52,15 @@
         </div>
     </div>
     <!-- Seccion de la parte derecha -->
-    <div class="Section2" [style.height.px]="Height">
+    <div [style.height.px]="Height" class={{StyleSection2}}>
         <div class="name_sensor_container">
+            <img src="./assets/UI/menu.png" alt="Ocultar" class="Ocultar" (click)="HideSection2()">
             <span class="Title">Opciones</span>
         </div>
         <div class="container_center">
             <div class="Container_Subtitle">
-                <span class="Subtitle">Selecciona Sensor</span>
+                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <span class="Subtitle">Selecciona el sensor</span>
             </div>
         </div>
         <div class="container_center">
@@ -73,46 +75,60 @@
                 <option class="Option2">Sensor 8</option>
             </select>
         </div>
-        <div class="line"></div>
+        <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
+                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
                 <span class="Subtitle">Alarma</span>
             </div>
         </div>
         <div class="container_center">
             <div class="object_alarm">
-                <div class="object_alarm_subcontainer">
+                <!-- <div class="object_alarm_subcontainer">
                     <span class="font_alarma1">
                         Para: {{Name_Sensor}}
                     </span>
-                </div>
+                </div> -->
                 <div class="object_alarm_subcontainer">
                     <span class="font_alarma2">
-                        Dato de Advertencia: {{valorAdvertencia}}
+                        Valor maximo advertencia: {{valorAdvertenciaMax}}
                     </span>
                 </div>
-                <div class="object_alarm_subcontainer">
-                    <div class="container_img_alarm">
-                        <img src="./assets/UI/editar.png" class="Object_img_borrar" alt="Borrar Alarma"
-                            (click)="EditarAlarma()">
-                    </div>
-                </div>
+           
             </div>
         </div>
+        <div class="container_center">
+            <div class="object_alarm">
+                <!-- <div class="object_alarm_subcontainer">
+                    <span class="font_alarma1">
+                        Para: {{Name_Sensor}}
+                    </span>
+                </div> -->
+                <div class="object_alarm_subcontainer">
+                    <span class="font_alarma2">
+                        Valor minimo advertencia: {{valorAdvertenciaMin}}
+                    </span>
+                </div>
+           
+            </div>
+    
+        </div>
 
-        <div class="line"></div>
+        <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
+                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
                 <span class="Subtitle">Datos</span>
             </div>
         </div>
-        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(0)" id="line" #line><label for="line" class="Checkbox_Text">Ver grafica de barras</label></div>
-        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(1)" id="radio" #radio><label for="radio" class="Checkbox_Text">Ver radio bar</label></div>
-        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(2)" id="data" #data><label for="data" class="Checkbox_Text">Ver datos</label></div>
-        <div class="line"></div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(0)" id="line" #line><i></i><label for="line" class="Checkbox_Text">Ver grafica de barras</label></div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(1)" id="radio" #radio><i></i><label for="radio" class="Checkbox_Text">Ver radio bar</label></div>
+        <div class="Checkbox"><input type="checkbox" class="checkbox" style="cursor: pointer;" (change)="CheckBoxEvent(2)" id="data" #data><i></i><label for="data" class="Checkbox_Text">Ver datos</label></div>
+        <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
-                <span class="Subtitle">Descarga de Datos</span>
+                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <span class="Subtitle">Descarga de datos</span>
             </div>
         </div>
         <!-- Button download Excel file -->
@@ -126,6 +142,6 @@
                 <div style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;" (click)="DownloadExcel()"></div>
             </div>
         </div>
-        <div class="line"></div>
+        <!-- <div class="line"></div> -->
     </div>
 </div>

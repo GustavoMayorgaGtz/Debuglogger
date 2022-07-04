@@ -2,7 +2,8 @@
 export interface Alert{
     _id: string;
     name: string; 
-    dataTrigger: number;
+    dataTriggerMax: number;
+    dataTriggerMin: number;
     email: string;
     status: number;
     error:string;

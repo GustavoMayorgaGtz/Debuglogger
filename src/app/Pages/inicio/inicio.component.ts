@@ -12,7 +12,7 @@ import {
   ApexResponsive,
   ChartComponent
 } from "ng-apexcharts";
-import { Subscription } from 'rxjs';
+import { Subscription, windowCount } from 'rxjs';
 import { AlertServiceService } from 'src/app/Servicios/AlertService/alert-service.service';
 import { ExcelService } from 'src/app/Servicios/DownloadExcel/excel.service';
 import { LineChartServiceService } from 'src/app/Servicios/LineChartService/line-chart-service.service';
@@ -64,7 +64,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
       startAngle: -90,
       endAngle: 90,
       track: {
-        background: "#202020",
+        background: "RGB(78, 111, 130)",
         strokeWidth: "50%",
         margin: 0, // margin is in pixels
         dropShadow: {
@@ -83,12 +83,12 @@ export class InicioComponent implements OnInit, AfterViewInit {
         name: {
           offsetY: 20,
           show: true,
-          color: "#73be69",
+          color: "RGB(78, 111, 130)",
           fontSize: "calc(8px + 1vw)"
         },
         value: {
           offsetY: -30,
-          color: "#73be69",
+          color: "RGB(78, 111, 130)",
           fontSize: "calc(8px + 0.8vw)",
           show: true
         }
@@ -98,7 +98,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   };
   /***/labels: string[] = ["Temperatura"];
   /***/fill: ApexFill = {
-    colors: ["#73be69"]
+    colors: ["RGB(78, 111, 130)"]
     /***/
   };
   /****************Radial Bar default options (CLOSE)***********/
@@ -109,11 +109,11 @@ export class InicioComponent implements OnInit, AfterViewInit {
   lineChartData = [{
     data: this.dataInformation,
     label: 'Sensor2',
-    backgroundColor: "rgba(155,190,105,0.5)",
-    borderColor: "#73be69",
-    pointBorderColor: "#73be69",
-    hoverBorderColor: "#90EC83)",
-    pointBackgroundColor: "#5A9852",
+    backgroundColor: "#4e6f82",
+    borderColor: "#4e6f82",
+    pointBorderColor: "#4e6f82",
+    hoverBorderColor: "#4e6f82",
+    pointBackgroundColor: "#4e6f82",
     borderWidth: 2,
   }];
 
@@ -133,7 +133,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
         stacked: true,
         grid: {
           display: false,
-          color: "#73be69"
+          color: "#4e6f82"
         }
       },
       x: {
@@ -171,8 +171,11 @@ export class InicioComponent implements OnInit, AfterViewInit {
   //Tamaños
   public height: number = 0;
   //Alarma
-  public valorAdvertencia: number = 220;
-
+  public valorAdvertenciaMax: number = 220;
+  public valorAdvertenciaMin: number = 220;
+  //
+  public StyleSection2: string = "Section2";
+  public isHideSection2: boolean = true;
   //Subscription
   public AlarmaSubcription!: Subscription;
   public LineChartSubcription !: Subscription;
@@ -184,13 +187,69 @@ export class InicioComponent implements OnInit, AfterViewInit {
   /**********************************************************************************************************************/
 
   constructor(
-    private cd: ChangeDetectorRef,
     private AlertService: AlertServiceService,
     private LineChartService: LineChartServiceService,
     private RadialChartService: RadialChartServiceService,
     private ExcelService: ExcelService,
   ) { }
-
+  reiniciarGrafica() {
+    this.series2 = [83.5];
+  /***/this.chartRadialBar = {
+      zoom: {
+        enabled: true,
+        autoScaleYaxis: false,
+        type: 'y',
+      },
+      width: "100%",
+      height: "100%",
+      type: "radialBar",
+      offsetY: 50
+      /***/
+    };
+  /***/
+  /***/this.plotOptions = {
+      radialBar: {
+        startAngle: -90,
+        endAngle: 90,
+        track: {
+          background: "RGB(78, 111, 130)",
+          strokeWidth: "50%",
+          margin: 0, // margin is in pixels
+          dropShadow: {
+            enabled: true,
+            top: -1,
+            left: 0,
+            blur: 4,
+            opacity: 0.35
+          }
+        },
+        hollow: {
+          size: "90%",
+        },
+        dataLabels: {
+          show: true,
+          name: {
+            offsetY: 20,
+            show: true,
+            color: "RGB(78, 111, 130)",
+            fontSize: "calc(8px + 1vw)"
+          },
+          value: {
+            offsetY: -30,
+            color: "RGB(78, 111, 130)",
+            fontSize: "calc(8px + 0.8vw)",
+            show: true
+          }
+        }
+      }
+      /***/
+    };
+  /***/this.labels = ["Temperatura"];
+  /***/this.fill = {
+      colors: ["RGB(78, 111, 130)"]
+      /***/
+    };
+  }
 
 
   ngAfterViewInit(): void {
@@ -207,6 +266,15 @@ export class InicioComponent implements OnInit, AfterViewInit {
     //Eventos
     this.setHeight = document.body.scrollHeight + 20;
     window.addEventListener('resize', () => {
+      if(window.innerWidth > 700)
+      {
+      
+      }else
+      {
+        this.StyleSection2 = "Section2";
+      }
+      if (!this.radialChart)
+        window.location.reload();
       this.setHeight = document.body.scrollHeight + 20;
       this.SizeRadialChart();
     });
@@ -224,7 +292,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
       this.SelectSensor(this.Name_Sensor);
 
       clearInterval();
-    }, 10000);
+    }, 1000);
   }
 
   DisployMenu(event: Boolean) {
@@ -242,7 +310,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
         break;
       }
       case 'contacto': {
-        window.location.href="/Contacto";
+        window.location.href = "/Contacto";
         break;
       }
     }
@@ -287,23 +355,23 @@ export class InicioComponent implements OnInit, AfterViewInit {
     if (this.dataC) this.dataElement.checked = this.data; else console.warn("La pagina no se cargo correctamente");
     // if (this.barC) this.barElement.checked = this.bar; else console.warn("La pagina no se cargo correctamente");
   }
-  EditarAlarma() {
-    let data = prompt("Valor de Advertencia:");
-    if (data) {
-      let aux = parseInt(data)
-      if (aux as Number) {
-        this.valorAdvertencia = aux;
-        this.AlarmaEditSubscription = this.AlertService.UpdateAlert({ name: this.Name_Sensor, dataTrigger: this.valorAdvertencia }).subscribe((Data) => {
-        })
-      } else {
-        alert("El tipo de valor es incorrecto");
+  // EditarAlarma() {
+  //   let data = prompt("Valor de Advertencia:");
+  //   if (data) {
+  //     let aux = parseInt(data)
+  //     if (aux as Number) {
+  //       this.valorAdvertencia = aux;
+  //       this.AlarmaEditSubscription = this.AlertService.UpdateAlert({ name: this.Name_Sensor, dataTrigger: this.valorAdvertencia }).subscribe((Data) => {
+  //       })
+  //     } else {
+  //       alert("El tipo de valor es incorrecto");
 
-      }
+  //     }
 
-    }
-    // console.log("EditarAlarma function in InicioComponent.ts");
-    // console.log("-> \"data:\"", data)
-  }
+  //   }
+  //   // console.log("EditarAlarma function in InicioComponent.ts");
+  //   // console.log("-> \"data:\"", data)
+  // }
   SizeRadialChart() {
     //Cambiamos el tamaño de la grafica radial
     if (this.RadialContianer) {
@@ -335,7 +403,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
     this.AlarmaSubcription = await this.AlertService.GetAlert({ name: sensor }).subscribe((Alert) => {
       if (Alert) {
-        this.valorAdvertencia = Alert.dataTrigger;
+        this.valorAdvertenciaMax = Alert.dataTriggerMax;
+        this.valorAdvertenciaMin = Alert.dataTriggerMin;
       }
     })
     this.LineChartSubcription = await this.LineChartService.GetLineChart({ name: sensor }).subscribe((LineChart) => {
@@ -346,10 +415,9 @@ export class InicioComponent implements OnInit, AfterViewInit {
         let data: string[] = [];
         LineChart.data.forEach(element => { data.push(element.toString()); });
         this.barChartLabels = data;
-      }else
-      {
+      } else {
         console.log(LineChart);
-        alert("No hay datos del sensor");
+        //  alert("No hay datos del sensor");
       }
     });
     this.RadialChartSubscription = await this.RadialChartService.GetRadialChart({ name: sensor }).subscribe((RadialChart) => {
@@ -371,22 +439,22 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.lineChartData = [{
       data: this.dataInformation,
       label: this.Name_Sensor,
-      backgroundColor: "rgba(155,190,105,0.5)",
-      borderColor: "#73be69",
-      pointBorderColor: "#73be69",
-      hoverBorderColor: "#90EC83)",
-      pointBackgroundColor: "#5A9852",
+      backgroundColor: "RGB(78, 111, 130, 0.5)",
+      borderColor: "#4e6f82",
+      pointBorderColor: "#4e6f82",
+      hoverBorderColor: "#4e6f82",
+      pointBackgroundColor: "#4e6f82",
       borderWidth: 2,
     }];
 
     this.lineChartData = [{
       data: values,
       label: this.Name_Sensor,
-      backgroundColor: "rgba(155,190,105,0.5)",
-      borderColor: "#73be69",
-      pointBorderColor: "#73be69",
-      hoverBorderColor: "#90EC83)",
-      pointBackgroundColor: "#5A9852",
+      backgroundColor: "RGB(78, 111, 130, 0.5)",
+      borderColor: "RGB(78, 111, 130)",
+      pointBorderColor: "RGB(78, 111, 130)",
+      hoverBorderColor: "RGB(78, 111, 130)",
+      pointBackgroundColor: "RGB(78, 111, 130)",
       borderWidth: 2,
     }];
   }
@@ -399,6 +467,25 @@ export class InicioComponent implements OnInit, AfterViewInit {
       document.body.appendChild(downloadLink);
       downloadLink.click();
     })
+  }
+
+  HideSection2() {
+    if(window.innerWidth > 700)
+    {
+      if (this.isHideSection2){
+        alert("change1")
+        this.StyleSection2 = "Section2_Hide";
+        this.isHideSection2 = false;
+      } else {
+                alert("change2")
+        this.StyleSection2 = "Section2_Show";
+        this.isHideSection2 = true;
+      }
+    }else
+    {
+      this.StyleSection2 = "Section2";
+    }
+  
   }
 
 
@@ -448,7 +535,10 @@ export class InicioComponent implements OnInit, AfterViewInit {
     return this.line;
   }
   get Radio() {
-    return this.radio
+    return this.radio;
+  }
+  set Radio(value: boolean) {
+    this.radio = value;
   }
   get Data() {
     return this.data;
