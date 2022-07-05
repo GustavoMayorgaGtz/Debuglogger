@@ -11,16 +11,29 @@
     left: -45px;
     width:45px;
     height: 100%;
-    filter:invert(0);
+    filter:invert(1);
+    background-color: white;
     cursor: pointer;
+    transition: all 1s;
+}
+.Ocultar_Invert{
+    position: absolute;
+    left: -45px;
+    width:45px;
+    height: 100%;
+    filter:invert(1);
+    background-color: white;
+    cursor: pointer;
+    /* transform: rotate(0deg); */
+    transition: all 1s;
 }
 .container_body {
-    overflow:hidden;
     width: 100%;
     height: max-content;
     background-color: RGB(72, 73, 77);
     /* estructura */
     display: flex;
+    flex-wrap: nowrap;
 }
 
 /* Parte izquierda de toda la pantalla donde van ubicadas las graficas y los datos */
@@ -30,25 +43,32 @@
     /*estructura*/
     display: block;
 }
+.Section1Disploy {
+    width: 100%;
+    background-color: RGB(72, 73, 77);
+    /*estructura*/
+    top: 80px;
+    position:absolute;
+    display: block;
+}
 
 /* Parte derecja de toda la pantalla donde se pueden crear alarmas y manipular los datos que se ven*/
 .Section2 {
-    margin-left:3%;
-    width: 37%;
-    background-color: RGB(72, 73, 77);
 
+    width: 40%;
+    background-color: RGB(72, 73, 77);
+    opacity: 1;
     /*estructura*/
     display: block;
 }
 .Section2_Hide{
-    margin-left:3%;
     width: 37%;
     background-color: RGB(72, 73, 77);
     animation: HideSection2 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     /*estructura*/
-    display: block;
+    
 }
 .Section2_Show{
     margin-left:3%;
@@ -58,7 +78,6 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     /*estructura*/
-    display: block;
 }
 
 
@@ -75,11 +94,10 @@
 }
 .name_sensor_container_title {
     /* primer div dentro de Section1 y que contiene el Nombre del sensor con fuente Title*/
-    width: 90%;
+    width: 100%;
     background-color: black;
     /*estructura*/
     display: flex;
-    margin-right: 10%;
     justify-content: center;
     align-items: center;
 }
@@ -135,7 +153,8 @@
     /*Container dentro de container_information_progressBar encargado de contener el progressBar circular*/
     margin-left: 10%;
     width: 40%;
-    min-width: 300px;
+    min-width: 250px;
+    max-width: 300px;
     height: 300px;
     border-radius: 15px;
     background-color: RGB(31, 32, 34);
@@ -149,6 +168,7 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
+    top:30px;
     width: 100%;
     height: 100%;
 
@@ -450,10 +470,10 @@ select:hover {
 
 .Information {
     font-family: 'Mukta', sans-serif;
-    font-size: calc(10px + .8vw);
+    font-size: calc(8px + .6vw);
     color: white;
     font-weight: bold;
-    margin-left: 10px;
+    
 }
 
 .Information_Black {
@@ -579,7 +599,7 @@ select:hover {
 
 .Information {
     font-family: 'Mukta', sans-serif;
-    font-size: calc(12px + 1.5vw);
+    font-size: calc(10px + 1vw);
     color: white;
     font-weight: bold;
     margin-left: 10px;
@@ -788,12 +808,15 @@ select:hover {
     0% {
         transform: translateX(100%);
         z-index: 0;
-        display:flex;
+        right: 0%;
+
+        display:none;
     }
 
     100% {
         transform: translateX(0%);
         display:flex;
+        right: 35%;
         z-index: 300;
     }
 }
@@ -807,7 +830,9 @@ select:hover {
 
     100% {
         transform: translateX(100%);
-        display: none;
+        position: absolute;
+        right: 0%;
+
         z-index: 0;
     }
 }

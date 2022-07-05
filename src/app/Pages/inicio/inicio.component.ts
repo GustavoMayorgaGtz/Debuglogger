@@ -55,7 +55,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
     width: "100%",
     height: "100%",
     type: "radialBar",
-    offsetY: 50
+    offsetY: 40
     /***/
   };
   /***/
@@ -176,6 +176,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
   //
   public StyleSection2: string = "Section2";
   public isHideSection2: boolean = true;
+  public StyleTriangulo: string = "Ocultar";
+  public StyleSection1: string = "Section1";
   //Subscription
   public AlarmaSubcription!: Subscription;
   public LineChartSubcription !: Subscription;
@@ -192,6 +194,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
     private RadialChartService: RadialChartServiceService,
     private ExcelService: ExcelService,
   ) { }
+
+
   reiniciarGrafica() {
     this.series2 = [83.5];
   /***/this.chartRadialBar = {
@@ -272,6 +276,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
       }else
       {
         this.StyleSection2 = "Section2";
+        this.StyleSection1 = "Section1";
+        this.StyleTriangulo = "Ocultar";
       }
       if (!this.radialChart)
         window.location.reload();
@@ -292,7 +298,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
       this.SelectSensor(this.Name_Sensor);
 
       clearInterval();
-    }, 1000);
+    }, 10000);
   }
 
   DisployMenu(event: Boolean) {
@@ -355,23 +361,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
     if (this.dataC) this.dataElement.checked = this.data; else console.warn("La pagina no se cargo correctamente");
     // if (this.barC) this.barElement.checked = this.bar; else console.warn("La pagina no se cargo correctamente");
   }
-  // EditarAlarma() {
-  //   let data = prompt("Valor de Advertencia:");
-  //   if (data) {
-  //     let aux = parseInt(data)
-  //     if (aux as Number) {
-  //       this.valorAdvertencia = aux;
-  //       this.AlarmaEditSubscription = this.AlertService.UpdateAlert({ name: this.Name_Sensor, dataTrigger: this.valorAdvertencia }).subscribe((Data) => {
-  //       })
-  //     } else {
-  //       alert("El tipo de valor es incorrecto");
 
-  //     }
-
-  //   }
-  //   // console.log("EditarAlarma function in InicioComponent.ts");
-  //   // console.log("-> \"data:\"", data)
-  // }
   SizeRadialChart() {
     //Cambiamos el tamaño de la grafica radial
     if (this.RadialContianer) {
@@ -473,17 +463,24 @@ export class InicioComponent implements OnInit, AfterViewInit {
     if(window.innerWidth > 700)
     {
       if (this.isHideSection2){
-        alert("change1")
         this.StyleSection2 = "Section2_Hide";
+        setTimeout(()=>{
+          this.StyleSection1 = "Section1Disploy"
+          this.StyleTriangulo = "Ocultar_Invert";
+        },1000);
+        
         this.isHideSection2 = false;
       } else {
-                alert("change2")
         this.StyleSection2 = "Section2_Show";
+        this.StyleSection1 = "Section1"
+        this.StyleTriangulo = "Ocultar";
         this.isHideSection2 = true;
       }
     }else
     {
       this.StyleSection2 = "Section2";
+      this.StyleSection1 = "Section1"
+      this.StyleTriangulo = "Ocultar";
     }
   
   }

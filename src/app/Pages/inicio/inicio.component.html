@@ -12,7 +12,7 @@
     </div>
     <!-- ********* -->
     <!-- Seccion de la parte izquierda -->
-    <div class="Section1" [style.height.px]="Height">
+    <div class={{StyleSection1}} [style.height.px]="Height">
         <div class="name_sensor_container_title">
             <span class="Title">{{Name_Sensor}}</span>
         </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="container_information" *ngIf="Data">
                 <span class="Information"> Maximo valor registrado: <br> <span class="Information" style="color:green">{{Max}}</span> </span>
-                <span class="Information"> Actual: {{Now}} </span>
+                <span class="Information"> Valor Actual:<br> <span class="Information" style="color:green">{{Now}}</span></span>
                 <span class="Information"> Minimo valor registrado: <br><span class="Information" style="color:green">{{Min}}</span> </span>
             </div>
         </div>
@@ -54,12 +54,12 @@
     <!-- Seccion de la parte derecha -->
     <div [style.height.px]="Height" class={{StyleSection2}}>
         <div class="name_sensor_container">
-            <img src="./assets/UI/menu.png" alt="Ocultar" class="Ocultar" (click)="HideSection2()">
+            <img src="./assets/UI/triangulo.png" alt="Ocultar" class={{StyleTriangulo}} (click)="HideSection2()">
             <span class="Title">Opciones</span>
         </div>
         <div class="container_center">
             <div class="Container_Subtitle">
-                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <!-- <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo"> -->
                 <span class="Subtitle">Selecciona el sensor</span>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
-                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <!-- <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo"> -->
                 <span class="Subtitle">Alarma</span>
             </div>
         </div>
@@ -117,7 +117,7 @@
         <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
-                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <!-- <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo"> -->
                 <span class="Subtitle">Datos</span>
             </div>
         </div>
@@ -127,7 +127,7 @@
         <!-- <div class="line"></div> -->
         <div class="container_center">
             <div class="Container_Subtitle">
-                <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo">
+                <!-- <img src="./assets/UI/triangulo.png" alt="triangulo" class="triangulo"> -->
                 <span class="Subtitle">Descarga de datos</span>
             </div>
         </div>
