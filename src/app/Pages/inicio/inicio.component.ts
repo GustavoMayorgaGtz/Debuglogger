@@ -452,7 +452,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   DownloadExcel(): void {
     this.ExcelService.DownloadExcel({ name: this.Name_Sensor }).subscribe((data) => {
       const downloadLink = document.createElement('a');
-      downloadLink.href = "./assets/excel.xlsx";
+      downloadLink.href = "http://localhost:3000/excel.xlsx";
       downloadLink.setAttribute('download', data.name + ".xls");
       document.body.appendChild(downloadLink);
       downloadLink.click();

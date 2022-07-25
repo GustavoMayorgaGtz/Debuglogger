@@ -10,6 +10,7 @@ import { NgApexchartsModule} from 'ng-apexcharts';
 import { ContactoComponent } from './Pages/contacto/contacto.component';
 import { TutorialComponent } from './Pages/tutorial/tutorial.component';
 import { RouterModule } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { RouterModule } from '@angular/router';
     TutorialComponent
   ],
   imports: [
+    HashLocationStrategy,
+    LocationStrategy,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ComponentesModule,
@@ -27,7 +30,8 @@ import { RouterModule } from '@angular/router';
     NgChartsModule,
     RouterModule
   ],
-  providers: [Document,HttpClient],
+  providers: [Document,HttpClient,
+  {provide: LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
